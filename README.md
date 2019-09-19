@@ -1,7 +1,7 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Name here
+## Student Name  : Calvin Tam
 
-## Student ID    : ID here
+## Student ID    : 917902523
 
-## Student Email : Email here
+## Student Email : ctam4@mail.sfsu.edu
