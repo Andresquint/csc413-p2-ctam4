@@ -3,13 +3,18 @@ package interpreter;
 import java.util.ArrayList;
 
 public class Program {
-
     private ArrayList<ByteCode> program;
 
     public Program() {
         program = new ArrayList<>();
     }
 
+    /**
+     * This function returns the ByteCode at a given index
+     *
+     * @param  pc index
+     * @return ByteCode object
+     */
     protected ByteCode getCode(int pc) {
         return this.program.get(pc);
     }
@@ -21,10 +26,6 @@ public class Program {
      * HINT: make note what type of data-stucture bytecodes are stored in.
      */
     public void resolveAddrs() {
-
+        // TODO
     }
-
-
-
-
 }

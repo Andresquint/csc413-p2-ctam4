@@ -9,13 +9,19 @@ package interpreter;
 import java.util.HashMap;
 
 public class CodeTable {
-    
     private static HashMap<String,String> codeTable;
-    
-    private CodeTable(){}
-    
-    public static void init(){
-        codeTable =  new HashMap<>();
+
+    private CodeTable() {}
+
+    /**
+     * The init function will create an entry in the
+     * HashMap for each byte code listed in the table
+     * presented earlier. This table will be used to
+     * map bytecode names to their bytecode classes.
+     * For example, POP to PopCode.
+     */
+    public static void init() {
+        codeTable = new HashMap<>();
         codeTable.put("HALT",        "HaltCode");
         codeTable.put("POP",         "PopCode");
         codeTable.put("FALSEBRANCH", "FalseBranchCode");
@@ -36,12 +42,11 @@ public class CodeTable {
     /**
      * A method to facilitate the retrieval of the names
      * of a specific byte code class.
+     *
      * @param key for byte code.
      * @return class name of desired byte code.
      */
-    public static String getClassName(String key){
-        
+    public static String getClassName(String key) {
         return codeTable.get(key);
-        
     }
 }
