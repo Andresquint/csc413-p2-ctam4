@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import interpreter.VirtualMachine;
 
 public class LabelCode extends ByteCode {
+    private String label;
+
     public void init(ArrayList args) {
-        // TODO
         this.name = "LABEL";
+        // check if there is only one argument
+        if (args == null || args.size() != 1) {
+            throw new IllegalArgumentException();
+        }
+        this.label = (String) args.get(0);
     }
 
-    public void execute(VirtualMachine vm) {
-        // TODO
-    }
+    public void execute(VirtualMachine vm) {}
 
     public String toString() {
-        // TODO
-        return "";
+        return this.name + " " + this.getLabel();
     }
 
     public String getLabel() {

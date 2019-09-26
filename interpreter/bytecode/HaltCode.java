@@ -5,8 +5,11 @@ import interpreter.VirtualMachine;
 
 public class HaltCode extends ByteCode {
     public void init(ArrayList args) {
-        // TODO
         this.name = "HALT";
+        // check if there is no argument
+        if (args != null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void execute(VirtualMachine vm) {
@@ -14,7 +17,6 @@ public class HaltCode extends ByteCode {
     }
 
     public String toString() {
-        // TODO
-        return "";
+        return this.name;
     }
 }
