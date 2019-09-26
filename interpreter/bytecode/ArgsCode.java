@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class ArgsCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "ARGS";
     }
 
     public void execute(VirtualMachine vm) {

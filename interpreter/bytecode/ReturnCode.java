@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class ReturnCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "RETURN";
     }
 
     public void execute(VirtualMachine vm) {

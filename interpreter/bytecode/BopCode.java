@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class BopCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "BOP";
     }
 
     public void execute(VirtualMachine vm) {

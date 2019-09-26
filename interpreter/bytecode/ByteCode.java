@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import interpreter.VirtualMachine;
 
 public abstract class ByteCode {
+    protected String name = "";
+
     /**
      * This abstract method is to initialize ByteCode
      *

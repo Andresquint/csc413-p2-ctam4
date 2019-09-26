@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class DumpCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "DUMP";
     }
 
     public void execute(VirtualMachine vm) {

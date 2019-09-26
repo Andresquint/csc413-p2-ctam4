@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class StoreCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "STORE";
     }
 
     public void execute(VirtualMachine vm) {

@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class HaltCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "HALT";
     }
 
     public void execute(VirtualMachine vm) {

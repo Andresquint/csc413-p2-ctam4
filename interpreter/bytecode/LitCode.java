@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class LitCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "LIT";
     }
 
     public void execute(VirtualMachine vm) {

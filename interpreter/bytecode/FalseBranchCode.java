@@ -6,6 +6,7 @@ import interpreter.VirtualMachine;
 public class FalseBranchCode extends ByteCode {
     public void init(ArrayList args) {
         // TODO
+        this.name = "FALSEBRANCH";
     }
 
     public void execute(VirtualMachine vm) {
