@@ -9,8 +9,8 @@
 
 #intlij .idea
 .idea
-.idea
-out/*
+out
+*.iml
 
 
 #Netbeans
@@ -20,8 +20,9 @@ nbproject/*
 # VS Code project settings
 .vscode
 
-#MacOS folder meta-data
+# MacOS folder meta-data
 .DS_Store
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -32,4 +33,4 @@ nbproject/*
 *.zip
 *.tar.gz
 *.rar
-
+*.7z
