@@ -1,12 +1,13 @@
 package interpreter;
 
 import java.util.ArrayList;
+import interpreter.bytecode.ByteCode;
 
 public class Program {
     private ArrayList<ByteCode> program;
 
     public Program() {
-        program = new ArrayList<>();
+        this.program = new ArrayList<>();
     }
 
     /**
@@ -25,7 +26,7 @@ public class Program {
      * correct addresses so the VirtualMachine knows what to set the Program Counter(PC)
      * HINT: make note what type of data-stucture bytecodes are stored in.
      */
-    public void resolveAddrs() {
+    public void resolveAddress() {
         // TODO
     }
 }

@@ -1,6 +1,7 @@
 package interpreter;
 
 import java.util.Stack;
+import interpreter.bytecode.ByteCode;
 
 public class VirtualMachine {
     private RunTimeStack   runStack;
