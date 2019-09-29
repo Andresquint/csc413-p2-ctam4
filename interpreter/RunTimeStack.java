@@ -1,5 +1,6 @@
 package interpreter;
 
+import java.util.EmptyStackException;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -18,11 +19,11 @@ public class RunTimeStack {
     private Stack<Integer>     framePointer;
 
     public RunTimeStack() {
-        runTimeStack = new ArrayList<>();
-        framePointer = new Stack<>();
+        this.runTimeStack = new ArrayList<>();
+        this.framePointer = new Stack<>();
         // Add initial Frame Pointer, main is the entry
         // point of our language, so its frame pointer is 0.
-        framePointer.add(0);
+        this.framePointer.add(0);
     }
 
     /**
@@ -42,8 +43,11 @@ public class RunTimeStack {
      * @return copy of the top of the stack.
      */
     public int peek() {
-        // TODO
-        return 0;
+        // check if runTimeStack is empty
+        if (this.runTimeStack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.runTimeStack.get(this.runTimeStack.size() - 1);
     }
 
     /**
@@ -53,8 +57,8 @@ public class RunTimeStack {
      * @return value pushed
      */
     public int push(int i) {
-        // TODO
-        return 0;
+        this.runTimeStack.add(i);
+        return this.peek();
     }
 
     /**
@@ -63,8 +67,11 @@ public class RunTimeStack {
      * @return the value popped.
      */
     public int pop() {
-        // TODO
-        return 0;
+        // check if runTimeStack is empty
+        if (this.runTimeStack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.runTimeStack.remove(this.runTimeStack.size() - 1);
     }
 
     /**
@@ -75,8 +82,13 @@ public class RunTimeStack {
      * @return the item just stored
      */
     public int store(int offset) {
-        // TODO
-        return 0;
+        // check if runTimeStack is empty
+        if (this.runTimeStack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        int i = this.pop();
+        this.runTimeStack.add(this.peek() - offset, i);
+        return i;
     }
 
     /**
@@ -88,8 +100,11 @@ public class RunTimeStack {
      * @return item just loaded into the offset
      */
     public int load(int offset) {
-        // TODO
-        return 0;
+        // check if runTimeStack is empty
+        if (this.runTimeStack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.push(this.runTimeStack.get(this.framePointer.peek() - offset));
     }
 
     /**
@@ -98,8 +113,8 @@ public class RunTimeStack {
      *
      * @param offset slots down from the top of the runtime stack
      */
-    public void newFrameAt (int offset) {
-        // TODO
+    public void newFrameAt(int offset) {
+        this.framePointer.push(this.runTimeStack.size() - offset);
     }
 
     /**
@@ -107,6 +122,11 @@ public class RunTimeStack {
      * the frame pointer value from the FramePointer Stack.
      */
     public void popFrame() {
-        // TODO
+        int currentFrame = this.pop();
+        int i = this.framePointer.pop();
+        for (int j = this.runTimeStack.size() - 1; j >= i; j--) {
+            this.pop();
+        }
+        this.push(currentFrame);
     }
 }
