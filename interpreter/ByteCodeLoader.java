@@ -31,60 +31,55 @@ public class ByteCodeLoader extends Object {
     public Program loadCodes() {
         String line;
         ArrayList<String> token;
+
+        // create program object
+        Program program = new Program();
+
         try {
-            // if BufferedReader is ready
-            if (this.byteSource.ready()) {
-                // create program object
-                Program program = new Program();
+            // start reading line by line
+            while ((line = this.byteSource.readLine()) != null) {
+                // split is used here because StringTokenizer is a legacy class
+                // ref: https://docs.oracle.com/javase/7/docs/api/java/util/StringTokenizer.html
+                token = new ArrayList<String>(Arrays.asList(line.split(" ")));
 
-                // start reading line by line
-                while ((line = this.byteSource.readLine()) != null) {
-                    // split is used here because StringTokenizer is a legacy class
-                    // ref: https://docs.oracle.com/javase/7/docs/api/java/util/StringTokenizer.html
-                    token = new ArrayList<String>(Arrays.asList(line.split(" ")));
+                // remove empty elements
+                token.removeAll(Arrays.asList("", null));
 
-                    // remove empty elements
-                    token.removeAll(Arrays.asList("", null));
+                // if token has more than one list item
+                if (token.size() > 0) {
+                    // build ByteCode instance
+                    Class<?> c = Class.forName("interpreter.bytecode." + CodeTable.getClassName(token.get(0)));
+                    ByteCode bc = (ByteCode) c.getDeclaredConstructor().newInstance();
 
-                    // if token has more than one list item
-                    if (token.size() > 0) {
-                        ByteCode bc;
+                    // if there are arguments
+                    if (token.size() > 1) {
+                        // remove ByteCode name
+                        token.remove(0);
 
-                        // build ByteCode instance
-                        Class<?> c = Class.forName("interpreter.bytecode." + CodeTable.getClassName(token.get(0)));
-                        bc = (ByteCode) c.getDeclaredConstructor().newInstance();
-
-                        // if there are arguments
-                        if (token.size() > 1) {
-                            // remove ByteCode name
-                            token.remove(0);
-
-                            // initialize ByteCode instance with token
-                            bc.init(token);
-                        }
-                        // if there is no arguments
-                        else {
-                            // initialize ByteCode instance with null
-                            bc.init(null);
-                        }
-
-                        // put instance into program
-                        program.addCode(bc);
+                        // initialize ByteCode instance with token
+                        bc.init(token);
                     }
+                    // if there is no arguments
+                    else {
+                        // initialize ByteCode instance with null
+                        bc.init(null);
+                    }
+
+                    // put instance into program
+                    program.addCode(bc);
                 }
-
-                // resolve symbolic addresses
-                program.resolveAddress();
-
-                return program;
             }
-            // if BufferedReader not ready
-            else {
-                return null;
-            }
-        } catch (Exception e) {
-            System.out.println("**** " + e);
-            return null;
+
+            // resolve symbolic addresses
+            program.resolveAddress();
         }
+        // happens if there is any exception
+        catch (Exception e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
+
+        // return program object
+        return program;
     }
 }
