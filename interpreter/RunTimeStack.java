@@ -5,15 +5,15 @@ import java.util.Stack;
 
 public class RunTimeStack {
     /**
-     * This stack is used to record the beginning of
-     * each activation record (frame) when calling functions.
+     * This ArrayList is used to represent the runtime stack.
+     * It will be an ArrayList because we will need to access
+     * ALL locations of the runtime stack.
      */
     private ArrayList<Integer> runTimeStack;
 
     /**
-     * This ArrayList is used to represent the runtime stack.
-     * It will be an ArrayList because we will need to access
-     * ALL locations of the runtime stack.
+     * This stack is used to record the beginning of
+     * each activation record (frame) when calling functions.
      */
     private Stack<Integer>     framePointer;
 
