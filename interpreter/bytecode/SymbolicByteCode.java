@@ -36,7 +36,10 @@ public abstract class SymbolicByteCode extends ByteCode {
      *
      * @return resolved index in program ArrayList
      */
-    private int getIndex() {
+    protected int getIndex() {
+        if (this.index == -1) {
+            throw new IndexOutOfBoundsException();
+        }
         return this.index;
     }
 
