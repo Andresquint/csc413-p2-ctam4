@@ -15,11 +15,11 @@ public class StoreCode extends ByteCode {
         }
         switch (args.size()) {
             case 1:
-                value = Integer.parseInt((String) args.get(0));
+                this.value = Integer.parseInt((String) args.get(0));
                 break;
             case 2:
-                value = Integer.parseInt((String) args.get(0));
-                id = (String) args.get(1);
+                this.value = Integer.parseInt((String) args.get(0));
+                this.id = (String) args.get(1);
                 break;
         }
     }
@@ -30,7 +30,7 @@ public class StoreCode extends ByteCode {
 
     public String toString() {
         // if there is one argument
-        if (id == null) {
+        if (this.id == null) {
             return this.name + " " + this.value;
         }
         // if there are two arguments

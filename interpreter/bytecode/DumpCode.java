@@ -14,11 +14,11 @@ public class DumpCode extends ByteCode {
         }
         // check if argument is "ON"
         if (((String) args.get(0)).equals("ON")) {
-            status = true;
+            this.status = true;
         }
         // check if argument is "OFF"
         else if (((String) args.get(0)).equals("OFF")) {
-            status = false;
+            this.status = false;
         }
         // unsupported argument
         else {
@@ -32,7 +32,7 @@ public class DumpCode extends ByteCode {
 
     public String toString() {
         // if status is TRUE
-        if (status) {
+        if (this.status) {
             return this.name + " ON";
         }
         // if status is FALSE

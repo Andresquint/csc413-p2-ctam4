@@ -5,7 +5,6 @@ import interpreter.VirtualMachine;
 
 public class CallCode extends SymbolicByteCode {
     public void init(ArrayList args) {
-        // TODO
         this.name = "CALL";
         // check if there is only one argument
         if (args == null || args.size() != 1) {
