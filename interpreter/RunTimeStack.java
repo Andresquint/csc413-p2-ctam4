@@ -27,6 +27,15 @@ public class RunTimeStack {
     }
 
     /**
+     * This function returns size of runTimeStack
+     *
+     * @return size of runTimeStack ArrayList
+     */
+    public int getSize() {
+        return this.runTimeStack.size();
+    }
+
+    /**
      * Used for dumping the current state of the runTimeStack.
      * It will print portions of the stack based on respective
      * frame markers.
@@ -47,7 +56,7 @@ public class RunTimeStack {
         if (this.runTimeStack.isEmpty()) {
             throw new EmptyStackException();
         }
-        return this.runTimeStack.get(this.runTimeStack.size() - 1);
+        return this.runTimeStack.get(this.getSize() - 1);
     }
 
     /**
@@ -71,7 +80,7 @@ public class RunTimeStack {
         if (this.runTimeStack.isEmpty()) {
             throw new EmptyStackException();
         }
-        return this.runTimeStack.remove(this.runTimeStack.size() - 1);
+        return this.runTimeStack.remove(this.getSize() - 1);
     }
 
     /**
@@ -108,13 +117,22 @@ public class RunTimeStack {
     }
 
     /**
+     * This function returns size of framePointer
+     *
+     * @return size of framePointer Stack
+     */
+    public int getFrameSize() {
+        return this.framePointer.size();
+    }
+
+    /**
      * create a new frame pointer at the index offset slots down
      * from the top of the runtime stack.
      *
      * @param offset slots down from the top of the runtime stack
      */
     public void newFrameAt(int offset) {
-        this.framePointer.push(this.runTimeStack.size() - offset);
+        this.framePointer.push(this.getSize() - offset);
     }
 
     /**
@@ -124,7 +142,7 @@ public class RunTimeStack {
     public void popFrame() {
         int currentFrame = this.pop();
         int i = this.framePointer.pop();
-        for (int j = this.runTimeStack.size() - 1; j >= i; j--) {
+        for (int j = this.getSize() - 1; j >= i; j--) {
             this.pop();
         }
         this.push(currentFrame);

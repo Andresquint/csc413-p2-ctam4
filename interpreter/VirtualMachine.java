@@ -121,6 +121,10 @@ public class VirtualMachine {
         return this.pc;
     }
 
+    public int getSizeRunStack() {
+        return this.runStack.getSize();
+    }
+
     private void dumpRunStack() {
         this.runStack.dump();
     }
@@ -143,6 +147,10 @@ public class VirtualMachine {
 
     public int loadRunStack(int offset) {
         return this.runStack.load(offset);
+    }
+
+    public int getFrameSizeRunStack() {
+        return this.runStack.getFrameSize();
     }
 
     public void newFrameAtRunStack(int offset) {
