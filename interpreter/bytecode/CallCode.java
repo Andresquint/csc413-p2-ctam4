@@ -18,7 +18,7 @@ public class CallCode extends SymbolicByteCode {
         vm.pushReturnAddress(vm.getPC());
         // set current program counter to resolved index
         try {
-            vm.setPC(this.getIndex());
+            vm.setPC(this.getIndex() - 1);
         }
         // happens if address is not resolved
         catch (IndexOutOfBoundsException e) {

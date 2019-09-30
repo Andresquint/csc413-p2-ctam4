@@ -19,7 +19,7 @@ public class FalseBranchCode extends SymbolicByteCode {
         try {
             // check if the top of stack is 0
             if (vm.popRunStack() == 0) {
-                vm.setPC(this.getIndex());
+                vm.setPC(this.getIndex() - 1);
             }
         }
         // happens if stack is empty or address is not resolved

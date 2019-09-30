@@ -16,7 +16,7 @@ public class GotoCode extends SymbolicByteCode {
     public void execute(VirtualMachine vm) {
         // set program counter to index
         try {
-            vm.setPC(this.getIndex());
+            vm.setPC(this.getIndex() - 1);
         }
         // happens if address is not resolved
         catch (IndexOutOfBoundsException e) {
