@@ -109,7 +109,7 @@ public class RunTimeStack {
             throw new EmptyStackException();
         }
         int i = this.pop();
-        this.runTimeStack.add(this.peek() + offset, i);
+        this.runTimeStack.set(this.peekFrame() + offset, i);
         return i;
     }
 
