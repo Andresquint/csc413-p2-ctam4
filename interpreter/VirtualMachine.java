@@ -38,7 +38,7 @@ public class VirtualMachine {
             code.execute(this);
             if (this.isDumping) {
                 System.out.println(code.toString(this));
-                // check if ByteCode is DUMP
+                // check if ByteCode is not DUMP
                 if (!code.getClass().getSimpleName().equals("DumpCode")) {
                     // dump runStack
                     System.out.println(this.dumpRunStack());
