@@ -1,7 +1,7 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
 
 public class WriteCode extends ByteCode {
     public void init(ArrayList args) {
@@ -13,7 +13,7 @@ public class WriteCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        System.out.println(vm.peekRunStack());
     }
 
     public String toString() {

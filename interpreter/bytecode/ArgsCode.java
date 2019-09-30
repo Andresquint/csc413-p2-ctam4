@@ -1,7 +1,7 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
 
 public class ArgsCode extends ByteCode {
     private int number;
@@ -16,7 +16,7 @@ public class ArgsCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        vm.newFrameAtRunStack(this.number);
     }
 
     public String toString() {

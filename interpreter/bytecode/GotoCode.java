@@ -1,7 +1,7 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
 
 public class GotoCode extends SymbolicByteCode {
     public void init(ArrayList args) {
@@ -14,6 +14,14 @@ public class GotoCode extends SymbolicByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // set program counter to index
+        try {
+            vm.setPC(this.getIndex());
+        }
+        // happens if address is not resolved
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
     }
 }

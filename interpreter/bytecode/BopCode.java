@@ -1,10 +1,8 @@
 package interpreter.bytecode;
 
-
-
 import interpreter.VirtualMachine;
-
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +38,56 @@ public class BopCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        int a = 0, b = 0, result = 0;
+        // retrieve last two values from runStack
+        try {
+            b = vm.popRunStack();
+            a = vm.popRunStack();
+        }
+        // happens if stack is empty
+        catch (EmptyStackException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
+        switch (this.operation) {
+            case "+":
+                result = (int) a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "/":
+                result = a / b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "==":
+                result = a == b ? 1 : 0;
+                break;
+            case "!=":
+                result = a != b ? 1 : 0;
+                break;
+            case "<=":
+                result = a <= b ? 1 : 0;
+                break;
+            case "<":
+                result = a < b ? 1 : 0;
+                break;
+            case ">=":
+                result = a >= b ? 1 : 0;
+                break;
+            case ">":
+                result = a > b ? 1 : 0;
+                break;
+            case "|":
+                result = a == 1 || b == 1 ? 1 : 0;
+                break;
+            case "&":
+                result = a == 1 && b == 1 ? 1 : 0;
+                break;
+        }
+        vm.pushRunStack(result);
     }
 
     public String toString() {

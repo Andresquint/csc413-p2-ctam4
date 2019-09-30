@@ -1,7 +1,8 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class PopCode extends ByteCode {
     private int number;
@@ -16,7 +17,17 @@ public class PopCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // pop the top number levels of the runStack
+        try {
+            for (int i = 0; i < this.number; i++) {
+                vm.popRunStack();
+            }
+        }
+        // happens if stack is empty
+        catch (EmptyStackException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
     }
 
     public String toString() {

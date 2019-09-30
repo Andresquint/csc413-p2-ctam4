@@ -1,7 +1,8 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class LoadCode extends ByteCode {
     private int value;
@@ -25,7 +26,15 @@ public class LoadCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // load the value in the slot which value is the offset
+        try {
+            vm.loadRunStack(this.value);
+        }
+        // happens if stack is empty
+        catch (EmptyStackException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
     }
 
     public String toString() {

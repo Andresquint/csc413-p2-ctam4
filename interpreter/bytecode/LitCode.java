@@ -1,7 +1,7 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
 
 public class LitCode extends ByteCode {
     private int value;
@@ -25,7 +25,16 @@ public class LitCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // if there is one argument
+        if (this.id == null) {
+            // push to runStack with 0
+            vm.pushRunStack(0);
+        }
+        // if there are two arguments
+        else {
+            // push to runStack with value
+            vm.pushRunStack(this.value);
+        }
     }
 
     public String toString() {

@@ -1,7 +1,8 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ReadCode extends ByteCode {
     public void init(ArrayList args) {
@@ -13,7 +14,17 @@ public class ReadCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // create Scanner object from System.in
+        Scanner scanner = new Scanner(System.in);
+        // keep retrying until user enter an integer
+        System.out.print("Enter an interger: ");
+        while (!scanner.hasNextInt()) {
+            System.out.print("Not an integer! Try again: ");
+            scanner.next();
+        }
+        vm.pushRunStack(scanner.nextInt());
+        // close Scanner
+        scanner.close();
     }
 
     public String toString() {

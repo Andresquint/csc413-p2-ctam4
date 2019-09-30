@@ -1,7 +1,7 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
 
 public class DumpCode extends ByteCode {
     private boolean status;
@@ -27,7 +27,14 @@ public class DumpCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // if status is TRUE
+        if (this.status) {
+            vm.startDumping();
+        }
+        // if status is FALSE
+        else {
+            vm.stopDumping();
+        }
     }
 
     public String toString() {

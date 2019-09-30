@@ -1,7 +1,8 @@
 package interpreter.bytecode;
 
-import java.util.ArrayList;
 import interpreter.VirtualMachine;
+import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class FalseBranchCode extends SymbolicByteCode {
     public void init(ArrayList args) {
@@ -14,6 +15,17 @@ public class FalseBranchCode extends SymbolicByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // TODO
+        // pop the top of stack
+        try {
+            // check if the top of stack is 0
+            if (vm.popRunStack() == 0) {
+                vm.setPC(this.getIndex());
+            }
+        }
+        // happens if stack is empty or address is not resolved
+        catch (EmptyStackException | IndexOutOfBoundsException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+        }
     }
 }
