@@ -1,5 +1,7 @@
 package interpreter.bytecode;
 
+import interpreter.VirtualMachine;
+
 public abstract class SymbolicByteCode extends ByteCode {
     private String address;
     private int index = -1;
