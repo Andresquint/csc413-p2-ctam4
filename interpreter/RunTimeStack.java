@@ -126,7 +126,7 @@ public class RunTimeStack {
         if (this.runTimeStack.isEmpty()) {
             throw new EmptyStackException();
         }
-        return this.push(this.runTimeStack.get(this.framePointer.peek() + offset));
+        return this.push(this.runTimeStack.get(this.peekFrame() + offset));
     }
 
     /**
@@ -173,6 +173,19 @@ public class RunTimeStack {
             }
         }
         return result;
+    }
+
+    /**
+     * This function returns the top value of framePointer Stack
+     *
+     * @return top value of framePointer Stack
+     */
+    public int peekFrame() {
+        // check if framePointer is empty
+        if (this.framePointer.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.framePointer.peek();
     }
 
     /**
