@@ -25,16 +25,8 @@ public class LitCode extends ByteCode {
     }
 
     public void execute(VirtualMachine vm) {
-        // if there is one argument
-        if (this.id == null) {
-            // push to runStack with 0
-            vm.pushRunStack(0);
-        }
-        // if there are two arguments
-        else {
-            // push to runStack with value
-            vm.pushRunStack(this.value);
-        }
+        // push to runStack with value
+        vm.pushRunStack(this.value);
     }
 
     public String toString(VirtualMachine vm) {
