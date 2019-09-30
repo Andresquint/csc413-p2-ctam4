@@ -19,7 +19,7 @@ public class ArgsCode extends ByteCode {
         vm.newFrameAtRunStack(this.number);
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name + " " + this.number;
     }
 }

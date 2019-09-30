@@ -27,7 +27,7 @@ public class ReadCode extends ByteCode {
         scanner.close();
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name;
     }
 }

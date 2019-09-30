@@ -16,7 +16,7 @@ public class HaltCode extends ByteCode {
         vm.stopRunning();
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name;
     }
 }

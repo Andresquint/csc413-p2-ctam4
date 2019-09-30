@@ -25,5 +25,5 @@ public abstract class ByteCode {
      *
      * @return string
      */
-    public abstract String toString();
+    public abstract String toString(VirtualMachine vm);
 }

@@ -30,7 +30,7 @@ public class PopCode extends ByteCode {
         }
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name + " " + this.number;
     }
 }

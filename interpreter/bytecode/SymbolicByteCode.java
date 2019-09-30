@@ -43,14 +43,13 @@ public abstract class SymbolicByteCode extends ByteCode {
         return this.index;
     }
 
-    public String toString() {
-        // if address is not resolved
-        if (getIndex() == -1) {
-            return this.name + " " + this.getAddress();
-        }
-        // if address is resolved
-        else {
+    public String toString(VirtualMachine vm) {
+        try {
             return this.name + " " + this.getIndex();
+        }
+        // happens if address is not resolved
+        catch (IndexOutOfBoundsException e) {
+            return this.name + " " + this.getAddress();
         }
     }
 }

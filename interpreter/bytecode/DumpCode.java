@@ -37,7 +37,7 @@ public class DumpCode extends ByteCode {
         }
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         // if status is TRUE
         if (this.status) {
             return this.name + " ON";

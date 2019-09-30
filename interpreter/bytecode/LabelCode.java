@@ -17,7 +17,7 @@ public class LabelCode extends ByteCode {
 
     public void execute(VirtualMachine vm) {}
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name + " " + this.getLabel();
     }
 

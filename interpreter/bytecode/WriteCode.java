@@ -16,7 +16,7 @@ public class WriteCode extends ByteCode {
         System.out.println(vm.peekRunStack());
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         return this.name;
     }
 }

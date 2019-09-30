@@ -37,7 +37,7 @@ public class LoadCode extends ByteCode {
         }
     }
 
-    public String toString() {
+    public String toString(VirtualMachine vm) {
         // if there is one argument
         if (this.id == null) {
             return this.name + " " + this.value;
