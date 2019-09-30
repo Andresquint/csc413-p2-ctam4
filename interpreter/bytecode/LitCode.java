@@ -36,7 +36,7 @@ public class LitCode extends ByteCode {
         }
         // if there are two arguments
         else {
-            return this.name + " " + this.value + " " + this.id;
+            return this.name + " " + this.value + " " + this.id + "    int " + this.id;
         }
     }
 }

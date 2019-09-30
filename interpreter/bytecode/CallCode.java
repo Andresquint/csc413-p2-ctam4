@@ -26,4 +26,15 @@ public class CallCode extends SymbolicByteCode {
             System.exit(-1);
         }
     }
+
+    @Override
+    public String toString(VirtualMachine vm) {
+        try {
+            return this.name + " " + this.getAddress() + "   " + this.getAddress().split("<<")[0] + "(" + vm.dumpFrameRunStack(vm.getFrameSizeRunStack()) + ")";
+        }
+        // happens if address is not resolved
+        catch (IndexOutOfBoundsException e) {
+            return this.name + " " + this.getAddress();
+        }
+    }
 }

@@ -3,6 +3,7 @@ package interpreter;
 import java.util.EmptyStackException;
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class RunTimeStack {
     /**
@@ -42,8 +43,20 @@ public class RunTimeStack {
      * Example [1,2,3] [4,5,6] [7,8]
      * Frame pointers would be 0,3,6,8
      */
-    public void dump() {
-        // TODO
+    public String dump() {
+        try {
+            if (this.getFrameSize() == 1) {
+                return "[" + this.dumpFrame(1) + "]";
+            } else {
+                return this.dumpFrame(1);
+            }
+        }
+        // happens if stack is empty
+        catch (EmptyStackException | IllegalArgumentException e) {
+            System.out.println("**** " + e);
+            System.exit(-1);
+            return "";
+        }
     }
 
     /**
@@ -123,6 +136,43 @@ public class RunTimeStack {
      */
     public int getFrameSize() {
         return this.framePointer.size();
+    }
+
+    /**
+     * This functions returns string of framePointer dump from layer i
+     *
+     * @param i starting layer of index
+     * @return string of formatted elements of each layer separated with [] and space
+     */
+    public String dumpFrame(int i) {
+        // check if framePointer is empty
+        if (this.framePointer.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        // check if i is within size of framePointer Stack
+        if (i < 1 || i > this.getFrameSize()) {
+            throw new IllegalArgumentException();
+        }
+        String result = "";
+        int nextFrame;
+        for (int j = i - 1; j < this.getFrameSize(); j++) {
+            if (j + 1 < this.getFrameSize()) {
+                nextFrame = this.framePointer.get(j + 1);
+            } else {
+                nextFrame = this.getSize();
+            }
+            if (i != this.getFrameSize()) {
+                result += "[";
+            }
+            result += this.runTimeStack.subList(this.framePointer.get(j), nextFrame).stream().map(n -> n.toString()).collect(Collectors.joining(","));
+            if (i != this.getFrameSize()) {
+                result += "]";
+            }
+            if (j + 1 < this.getFrameSize()) {
+                result += " ";
+            }
+        }
+        return result;
     }
 
     /**

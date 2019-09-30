@@ -1,8 +1,8 @@
 package interpreter;
 
+import interpreter.bytecode.ByteCode;
 import java.util.EmptyStackException;
 import java.util.Stack;
-import interpreter.bytecode.ByteCode;
 
 public class VirtualMachine {
     // Used to store all variables in program.
@@ -37,7 +37,12 @@ public class VirtualMachine {
             ByteCode code = this.program.getCode(this.pc);
             code.execute(this);
             if (this.isDumping) {
-                this.dumpRunStack();
+                System.out.println(code.toString(this));
+                // check if ByteCode is DUMP
+                if (!code.getClass().getSimpleName().equals("DumpCode")) {
+                    // dump runStack
+                    System.out.println(this.dumpRunStack());
+                }
             }
             this.pc++;
         }
@@ -125,8 +130,8 @@ public class VirtualMachine {
         return this.runStack.getSize();
     }
 
-    private void dumpRunStack() {
-        this.runStack.dump();
+    private String dumpRunStack() {
+        return this.runStack.dump();
     }
 
     public int peekRunStack() {
@@ -151,6 +156,10 @@ public class VirtualMachine {
 
     public int getFrameSizeRunStack() {
         return this.runStack.getFrameSize();
+    }
+
+    public String dumpFrameRunStack(int i) {
+        return this.runStack.dumpFrame(i);
     }
 
     public void newFrameAtRunStack(int offset) {

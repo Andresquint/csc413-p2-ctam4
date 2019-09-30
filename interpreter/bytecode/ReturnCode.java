@@ -28,4 +28,15 @@ public class ReturnCode extends SymbolicByteCode {
             System.exit(-1);
         }
     }
+
+    @Override
+    public String toString(VirtualMachine vm) {
+        try {
+            return this.name + " " + this.getAddress() + "  EXIT " + this.getAddress().split("<<")[0] + " : " + vm.peekRunStack();
+        }
+        // happens if address is not resolved
+        catch (IndexOutOfBoundsException e) {
+            return this.name + " " + this.getAddress();
+        }
+    }
 }
