@@ -46,12 +46,6 @@ public abstract class SymbolicByteCode extends ByteCode {
     }
 
     public String toString(VirtualMachine vm) {
-        try {
-            return this.name + " " + this.getIndex();
-        }
-        // happens if address is not resolved
-        catch (IndexOutOfBoundsException e) {
-            return this.name + " " + this.getAddress();
-        }
+        return this.name + " " + this.getAddress();
     }
 }
