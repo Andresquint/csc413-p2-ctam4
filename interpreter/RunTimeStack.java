@@ -203,6 +203,10 @@ public class RunTimeStack {
      * the frame pointer value from the FramePointer Stack.
      */
     public void popFrame() {
+        // check if framePointer is empty
+        if (this.framePointer.isEmpty()) {
+            throw new EmptyStackException();
+        }
         int lastValue = this.peek();
         int i = this.framePointer.pop();
         for (int j = this.getSize() - 1; j >= i; j--) {
