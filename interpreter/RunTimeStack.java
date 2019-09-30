@@ -87,7 +87,7 @@ public class RunTimeStack {
             throw new EmptyStackException();
         }
         int i = this.pop();
-        this.runTimeStack.add(this.peek() - offset, i);
+        this.runTimeStack.add(this.peek() + offset, i);
         return i;
     }
 
@@ -104,7 +104,7 @@ public class RunTimeStack {
         if (this.runTimeStack.isEmpty()) {
             throw new EmptyStackException();
         }
-        return this.push(this.runTimeStack.get(this.framePointer.peek() - offset));
+        return this.push(this.runTimeStack.get(this.framePointer.peek() + offset));
     }
 
     /**

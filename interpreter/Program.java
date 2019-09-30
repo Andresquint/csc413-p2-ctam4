@@ -49,7 +49,7 @@ public class Program {
                 switch (this.program.get(i).getClass().getSimpleName()) {
                     case "CallCode":
                     case "FalseBranchCode":
-                    case "GoToCode":
+                    case "GotoCode":
                         pending.add(i);
                         break;
                     case "LabelCode":
