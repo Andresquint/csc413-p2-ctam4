@@ -32,7 +32,11 @@ public class ReturnCode extends SymbolicByteCode {
     @Override
     public String toString(VirtualMachine vm) {
         try {
-            return this.name + " " + this.getAddress() + "  EXIT " + this.getAddress().split("<<")[0] + " : " + vm.peekRunStack();
+            if (this.getAddress() != null) {
+                return this.name + " " + this.getAddress() + "  EXIT " + this.getAddress().split("<<")[0] + " : " + vm.peekRunStack();
+            } else {
+                return this.name + "  EXIT " + vm.peekRunStack();
+            }
         }
         // happens if address is not resolved
         catch (IndexOutOfBoundsException e) {
