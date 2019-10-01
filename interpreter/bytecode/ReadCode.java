@@ -17,7 +17,7 @@ public class ReadCode extends ByteCode {
         // create Scanner object from System.in
         Scanner scanner = new Scanner(System.in);
         // keep retrying until user enter an integer
-        System.out.print("Enter an interger: ");
+        System.out.print("Enter an integer: ");
         while (!scanner.hasNextInt()) {
             System.out.print("Not an integer! Try again: ");
             scanner.next();
