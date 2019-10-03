@@ -32,7 +32,7 @@ public class RunTimeStack {
      *
      * @return size of runTimeStack ArrayList
      */
-    public int getSize() {
+    private int getSize() {
         return this.runTimeStack.size();
     }
 
