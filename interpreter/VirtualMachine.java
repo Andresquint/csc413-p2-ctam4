@@ -58,7 +58,7 @@ public class VirtualMachine {
     }
 
     /**
-     * This function start dumping runStack of the program
+     * This function starts dumping runStack of the program
      */
     public void startDumping() {
         if (!this.isDumping) {
@@ -67,7 +67,7 @@ public class VirtualMachine {
     }
 
     /**
-     * This function resumes the program
+     * This function stops dumping runStack of the program
      */
     public void stopDumping() {
         if (this.isDumping) {
@@ -79,7 +79,7 @@ public class VirtualMachine {
      * This function pushes pc to returnAddress stack
      *
      * @param  pc program counter
-     * @return    value pushed
+     * @return value pushed
      */
     public int pushReturnAddress(int pc) {
         this.returnAddress.push(pc);
@@ -87,7 +87,7 @@ public class VirtualMachine {
     }
 
     /**
-     * This function pop the returnAddress stack
+     * This function pops the returnAddress stack
      *
      * @return the value popped
      */

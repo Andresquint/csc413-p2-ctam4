@@ -14,10 +14,8 @@ public class CodeTable {
     private CodeTable() {}
 
     /**
-     * The init function will create an entry in the
-     * HashMap for each byte code listed in the table
-     * presented earlier. This table will be used to
-     * map bytecode names to their bytecode classes.
+     * The init function will create an entry in the HashMap for each byte code listed in the table presented earlier.
+     * This table will be used to map bytecode names to their bytecode classes.
      * For example, POP to PopCode.
      */
     public static void init() {
@@ -40,8 +38,7 @@ public class CodeTable {
     }
 
     /**
-     * A method to facilitate the retrieval of the names
-     * of a specific byte code class.
+     * A method to facilitate the retrieval of the names of a specific byte code class.
      *
      * @param key for byte code.
      * @return class name of desired byte code.

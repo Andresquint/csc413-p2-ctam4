@@ -8,14 +8,12 @@ import java.util.stream.Collectors;
 public class RunTimeStack {
     /**
      * This ArrayList is used to represent the runtime stack.
-     * It will be an ArrayList because we will need to access
-     * ALL locations of the runtime stack.
+     * It will be an ArrayList because we will need to access ALL locations of the runtime stack.
      */
     private ArrayList<Integer> runTimeStack;
 
     /**
-     * This stack is used to record the beginning of
-     * each activation record (frame) when calling functions.
+     * This stack is used to record the beginning of each activation record (frame) when calling functions.
      */
     private Stack<Integer>     framePointer;
 
@@ -38,8 +36,7 @@ public class RunTimeStack {
 
     /**
      * Used for dumping the current state of the runTimeStack.
-     * It will print portions of the stack based on respective
-     * frame markers.
+     * It will print portions of the stack based on respective frame markers.
      * Example [1,2,3] [4,5,6] [7,8]
      * Frame pointers would be 0,3,6,8
      */
@@ -97,8 +94,7 @@ public class RunTimeStack {
     }
 
     /**
-     * Takes the top item of the run time stack, and stores
-     * it into a offset starting from the current frame.
+     * Takes the top item of the run time stack, and stores it into a offset starting from the current frame.
      *
      * @param offset number of slots above current frame marker
      * @return the item just stored
@@ -114,9 +110,7 @@ public class RunTimeStack {
     }
 
     /**
-     * Takes a value from the run time stack that is at offset
-     * from the current frame marker and pushes it onto the top of
-     * the stack.
+     * Takes a value from the run time stack that is at offset from the current frame marker and pushes it onto the top of the stack.
      *
      * @param offset number of slots above current frame marker
      * @return item just loaded into the offset
@@ -155,6 +149,7 @@ public class RunTimeStack {
         }
         String result = "";
         int nextFrame;
+        // build formatted elements of each layer separated with [] and space
         for (int j = i - 1; j < this.getFrameSize(); j++) {
             if (j + 1 < this.getFrameSize()) {
                 nextFrame = this.framePointer.get(j + 1);
@@ -189,8 +184,7 @@ public class RunTimeStack {
     }
 
     /**
-     * create a new frame pointer at the index offset slots down
-     * from the top of the runtime stack.
+     * create a new frame pointer at the index offset slots down from the top of the runtime stack.
      *
      * @param offset slots down from the top of the runtime stack
      */
@@ -199,8 +193,7 @@ public class RunTimeStack {
     }
 
     /**
-     * pop the current frame off the runtime stack. Also removes
-     * the frame pointer value from the FramePointer Stack.
+     * pop the current frame off the runtime stack. Also removes the frame pointer value from the FramePointer Stack.
      */
     public void popFrame() {
         // check if framePointer is empty

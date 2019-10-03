@@ -21,9 +21,10 @@ public abstract class ByteCode {
     public abstract void execute(VirtualMachine vm);
 
     /**
-     * This abstract method is to return ByteCode to compiled code
+     * This abstract method is to return ByteCode in string
      *
-     * @return string
+     * @param vm VirtualMachine for calling runStack methods for dumping
+     * @return string of ByteCode
      */
     public abstract String toString(VirtualMachine vm);
 }
