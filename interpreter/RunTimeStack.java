@@ -159,7 +159,7 @@ public class RunTimeStack {
             if (i != this.getFrameSize()) {
                 result += "[";
             }
-            result += this.runTimeStack.subList(this.framePointer.get(j), nextFrame).stream().map(n -> n.toString()).collect(Collectors.joining(","));
+            result += this.runTimeStack.subList(this.framePointer.get(j), nextFrame).stream().map(Object::toString).collect(Collectors.joining(","));
             if (i != this.getFrameSize()) {
                 result += "]";
             }
