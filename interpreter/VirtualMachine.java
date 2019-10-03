@@ -58,15 +58,6 @@ public class VirtualMachine {
     }
 
     /**
-     * This function resumes the program
-     */
-    public void resumeRunning() {
-        if (!this.isRunning) {
-            this.isRunning = true;
-        }
-    }
-
-    /**
      * This function start dumping runStack of the program
      */
     public void startDumping() {
@@ -124,10 +115,6 @@ public class VirtualMachine {
      */
     public int getPC() {
         return this.pc;
-    }
-
-    public int getSizeRunStack() {
-        return this.runStack.getSize();
     }
 
     private String dumpRunStack() {
